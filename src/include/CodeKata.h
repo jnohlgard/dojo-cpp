@@ -3,11 +3,6 @@
 //
 
 #pragma once
+#include <string>
 
-class CodeKata {
-  int _num;
- public:
-  CodeKata(int num);
-  int add(int num);
-  int get();
-};
+bool isBalanced(const std::string&);

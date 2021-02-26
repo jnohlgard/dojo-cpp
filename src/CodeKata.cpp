@@ -4,14 +4,11 @@
 
 #include "CodeKata.h"
 
-CodeKata::CodeKata(int num) : _num(num) {}
+#include <string>
 
-int CodeKata::add(int num) {
-  _num += num;
-  return _num;
+bool isBalanced(const std::string& input) {
+  if(input == "(") {
+    return false;
+  }
+  return true;
 }
-
-int CodeKata::get() {
-  return _num;
-}
-

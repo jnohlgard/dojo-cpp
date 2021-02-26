@@ -5,19 +5,20 @@
 #include "CodeKata.h"
 #include "catch2/catch.hpp"
 
-TEST_CASE( "CodeKata example case", "[tag1],[tag2]" ) {
+// https://www.hackerrank.com/challenges/balanced-brackets/problem
 
-  CodeKata sut( 5 );
+TEST_CASE("empty string is balanced", "") {
+  REQUIRE(isBalanced(""));
+}
 
-  REQUIRE( sut.get() == 5 );
+TEST_CASE("single brace is unbalanced ", "") {
+  REQUIRE(!isBalanced("("));
+}
 
-  SECTION( "adding changes number" ) {
-    sut.add(10);
+TEST_CASE("balanced braces", "") {
+  REQUIRE(isBalanced("()"));
+}
 
-    REQUIRE( sut.get() == 15 );
-    int res = sut.add(-5);
-
-    REQUIRE( sut.get() == 10 );
-    REQUIRE( res == sut.get() );
-  }
+TEST_CASE("non-balanced parens", "") {
+  REQUIRE(!isBalanced(")("));
 }
