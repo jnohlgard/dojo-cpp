@@ -10,4 +10,8 @@ class Grid {
   using Position = int;
   using Vec2 = std::pair<Position, Position>;
   Grid(Vec2 dimension) {}
+
+  bool isOpenHorizontally(Vec2) {
+    return false;
+  }
 };
