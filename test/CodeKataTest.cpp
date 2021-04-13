@@ -9,17 +9,8 @@
 
 TEST_CASE( "CodeKata example case" ) {
 
-  CodeKata sut( 5 );
-
-  REQUIRE( sut.get() == 5 );
-
-  SUBCASE( "adding changes number" ) {
-    sut.add(10);
-
-    REQUIRE( sut.get() == 15 );
-    int res = sut.add(-5);
-
-    REQUIRE( sut.get() == 10 );
-    REQUIRE( res == sut.get() );
-  }
+  CHECK(dojo_add(0, 0) == 0);
+  CHECK(dojo_add(0, 1) == 1);
+  CHECK(dojo_add(1, 0) == 1);
+  CHECK(dojo_add(10, 13) == 23);
 }
