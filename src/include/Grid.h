@@ -1,14 +1,10 @@
-//
-// Created by Joakim Nohlgård on 2020-02-20.
-//
-
 #pragma once
 #include <utility>
 
+/// Cartesian 2D grid
 class Grid {
  public:
-  using Position = int;
-  using Vec2 = std::pair<Position, Position>;
+  using Vec2 = std::pair<int, int>;
   Grid(Vec2 dimension) {}
 
   bool isOpenHorizontally(Vec2) {
