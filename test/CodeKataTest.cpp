@@ -9,4 +9,6 @@
 
 TEST_CASE( "Grid basic properties" ) {
   Grid grid{{5, 5}};
+
+  CHECK(!grid.isOpenHorizontally({3,3}));
 }
