@@ -4,10 +4,4 @@
 
 #pragma once
 
-class CodeKata {
-  int _num;
- public:
-  CodeKata(int num);
-  int add(int num);
-  int get();
-};
+int dojo_add(int lhs, int rhs);

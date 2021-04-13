@@ -4,14 +4,6 @@
 
 #include "CodeKata.h"
 
-CodeKata::CodeKata(int num) : _num(num) {}
-
-int CodeKata::add(int num) {
-  _num += num;
-  return _num;
+int dojo_add(int lhs, int rhs) {
+  return lhs + rhs;
 }
-
-int CodeKata::get() {
-  return _num;
-}
-
