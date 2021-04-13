@@ -1,10 +1,9 @@
-set(CATCH_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/catch/include)
-add_library(Catch2::Catch INTERFACE IMPORTED)
-target_include_directories(Catch2::Catch INTERFACE "${CATCH_INCLUDE_DIR}")
+add_subdirectory(doctest)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/doctest/scripts/cmake")
 
-add_executable(CodeKataTest CatchMain.cpp CodeKataTest.cpp)
-target_include_directories(CodeKataTest PRIVATE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
-target_include_directories(CodeKataTest PRIVATE $<TARGET_PROPERTY:CodeKata,INCLUDE_DIRECTORIES>)
-target_link_libraries(CodeKataTest PRIVATE CodeKata)
-target_link_libraries(CodeKataTest PRIVATE Catch2::Catch)
-add_test(NAME CodeKataTest COMMAND CodeKataTest)
+add_executable(CodeKataTest TestMain.cpp CodeKataTest.cpp)
+target_link_libraries(CodeKataTest PUBLIC CodeKata)
+target_link_libraries(CodeKataTest PUBLIC doctest::doctest)
+
+include(doctest)
+doctest_discover_tests(CodeKataTest ADD_LABELS 1)
