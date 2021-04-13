@@ -5,6 +5,8 @@
 #include "CodeKata.h"
 #include "doctest/doctest.h"
 
+// Start here: https://github.com/onqtam/doctest/blob/master/doc/markdown/tutorial.md
+
 TEST_CASE( "CodeKata example case" ) {
 
   CodeKata sut( 5 );
