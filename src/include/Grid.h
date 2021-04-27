@@ -8,11 +8,11 @@ class Grid {
   using value_type = ValueType;
   using Vec2 = std::pair<int, int>;
 
-  Grid(Vec2 dimension) {
+  Grid(Vec2 dimension) : value{} {
   }
 
   const ValueType &at(Vec2) const & {
-    return {};
+    return value;
   }
 
   ValueType &at(Vec2) & {
