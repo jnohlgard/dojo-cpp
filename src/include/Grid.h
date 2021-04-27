@@ -9,7 +9,7 @@ class Grid {
   using value_type = ValueType;
   using Vec2 = std::pair<int, int>;
 
-  Grid(Vec2 dimension) : dimension{dimension},  values(dimension.first * dimension.second, {}) {
+  explicit Grid(Vec2 dimension) : dimension{dimension},  values(dimension.first * dimension.second, {}) {
   }
 
   const ValueType &at(Vec2 position) const & {
