@@ -24,5 +24,14 @@ TEST_CASE("basic properties") {
     CHECK(doors.at({3, 3}) == Door::Closed);
     CHECK(doors.at({2, 2}) == Door::Open);
   }
+
+  SUBCASE("Bounds") {
+    CHECK_THROWS(doors.at({-1, 2}));
+    CHECK_THROWS(doors.at({5, 2}));
+    CHECK_THROWS(doors.at({2, -1}));
+    CHECK_THROWS(doors.at({2, 5}));
+    CHECK_THROWS(doors.at({5, 5}));
+    CHECK_THROWS(doors.at({-1, -1}));
+  }
 }
 }  // TEST_SUITE("Grid")
