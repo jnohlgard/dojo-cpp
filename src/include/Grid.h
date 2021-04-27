@@ -2,14 +2,17 @@
 #include <utility>
 #include <vector>
 
+namespace dojo {
+using Vec2 = std::pair<int, int>;
+
 /// Dense cartesian 2D grid
 template <typename ValueType>
 class Grid {
  public:
   using value_type = ValueType;
-  using Vec2 = std::pair<int, int>;
 
-  explicit Grid(Vec2 dimension) : dimension{dimension},  values(dimension.first * dimension.second, {}) {
+  explicit Grid(Vec2 dimension)
+      : dimension{dimension}, values(dimension.first * dimension.second, {}) {
   }
 
   const ValueType &at(Vec2 position) const & {
@@ -40,3 +43,4 @@ class Grid {
   Vec2 dimension;
   std::vector<value_type> values;
 };
+}  // namespace dojo

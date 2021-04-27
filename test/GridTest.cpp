@@ -7,6 +7,8 @@ enum class Door {
 };
 // using enum Door; // Not supported in Clang (at least currently)
 
+using namespace dojo;
+
 TEST_SUITE("Grid") {
 TEST_CASE("basic properties") {
   Grid<Door> doors{{4, 7}};
