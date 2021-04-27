@@ -8,7 +8,7 @@ class Grid {
   Grid(Vec2 dimension) {
   }
 
-  bool isOpenHorizontally(Vec2) {
+  bool at(Vec2) {
     return false;
   }
 };
