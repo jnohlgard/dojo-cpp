@@ -9,11 +9,11 @@ enum class Door {
 
 TEST_SUITE("Grid") {
 TEST_CASE("basic properties") {
-  Grid<Door> doors{{5, 5}};
+  Grid<Door> doors{{4, 7}};
 
   SUBCASE("Default constructed values") {
-    for (int x = 0; x < 5; ++x) {
-      for (int y = 0; y < 5; ++y) {
+    for (int x = 0; x < 4; ++x) {
+      for (int y = 0; y < 7; ++y) {
         CHECK(doors.at({x, y}) == Door::Closed);
       }
     }
@@ -27,10 +27,10 @@ TEST_CASE("basic properties") {
 
   SUBCASE("Bounds") {
     CHECK_THROWS(doors.at({-1, 2}));
-    CHECK_THROWS(doors.at({5, 2}));
+    CHECK_THROWS(doors.at({4, 2}));
     CHECK_THROWS(doors.at({2, -1}));
-    CHECK_THROWS(doors.at({2, 5}));
-    CHECK_THROWS(doors.at({5, 5}));
+    CHECK_THROWS(doors.at({2, 7}));
+    CHECK_THROWS(doors.at({4, 7}));
     CHECK_THROWS(doors.at({-1, -1}));
   }
 }
