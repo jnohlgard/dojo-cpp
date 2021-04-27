@@ -13,5 +13,6 @@ TEST_CASE("basic properties") {
 
   CHECK(doors.at({3, 3}) == Door::Closed);
   doors.at({2,2}) = Door::Open;
+  CHECK(doors.at({2, 2}) == Door::Open);
 }
 }  // TEST_SUITE("Grid")
