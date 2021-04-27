@@ -9,7 +9,7 @@ class Grid {
   using value_type = ValueType;
   using Vec2 = std::pair<int, int>;
 
-  Grid(Vec2 dimension) : width{dimension.second}, values{index_of(dimension)} {
+  Grid(Vec2 dimension) : dimension{dimension},  values(dimension.first * dimension.second, {}) {
   }
 
   const ValueType &at(Vec2 position) const & {
@@ -22,9 +22,21 @@ class Grid {
 
  private:
   std::size_t index_of(const Vec2 &position) {
-    return position.first * width + position.second;
+    if (position.first < 0) {
+      throw std::range_error("first < 0");
+    }
+    if (position.first >= dimension.first) {
+      throw std::range_error("first >= dimension");
+    }
+    if (position.second < 0) {
+      throw std::range_error("second < 0");
+    }
+    if (position.second >= dimension.second) {
+      throw std::range_error("second >= dimension");
+    }
+    return position.first * dimension.second + position.second;
   }
 
-  int width;
+  Vec2 dimension;
   std::vector<value_type> values;
 };
