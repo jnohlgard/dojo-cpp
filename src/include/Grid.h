@@ -14,4 +14,11 @@ class Grid {
   const ValueType &at(Vec2) const & {
     return {};
   }
+
+  ValueType &at(Vec2) & {
+    return value;
+  }
+
+ private:
+  value_type value;
 };
