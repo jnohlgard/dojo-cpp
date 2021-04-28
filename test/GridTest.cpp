@@ -22,23 +22,36 @@ TEST_CASE("basic properties") {
   }
 
   SUBCASE("Assigning values") {
-    doors.at({2, 2}) = Door::Open;
-    CHECK(doors.at({3, 3}) == Door::Closed);
-    CHECK(doors.at({2, 2}) == Door::Open);
-    doors.at({1, 0}) = Door::Open;
-    CHECK(doors.at({1, 0}) == Door::Open);
-    CHECK(doors.at({0, 0}) == Door::Closed);
-    doors.at({0, 0}) = Door::Open;
-    CHECK(doors.at({0, 0}) == Door::Open);
-    CHECK(doors.at({0, 6}) == Door::Closed);
-    doors.at({0, 6}) = Door::Open;
-    CHECK(doors.at({0, 6}) == Door::Open);
-    CHECK(doors.at({3, 0}) == Door::Closed);
-    doors.at({3, 0}) = Door::Open;
-    CHECK(doors.at({3, 0}) == Door::Open);
-    CHECK(doors.at({3, 6}) == Door::Closed);
-    doors.at({3, 6}) = Door::Open;
-    CHECK(doors.at({3, 6}) == Door::Open);
+    SUBCASE("Modifying one value should not modify an unrelated value") {
+      doors.at({2, 2}) = Door::Open;
+      CHECK(doors.at({3, 3}) == Door::Closed);
+      CHECK(doors.at({2, 2}) == Door::Open);
+    }
+
+    SUBCASE("Modifying an edge value") {
+      CHECK(doors.at({1, 0}) == Door::Closed);
+      doors.at({1, 0}) = Door::Open;
+      CHECK(doors.at({1, 0}) == Door::Open);
+    }
+
+    SUBCASE("Modifying corner cells") {
+      // Checking all corners to catch off-by-1 bugs
+      CHECK(doors.at({0, 0}) == Door::Closed);
+      doors.at({0, 0}) = Door::Open;
+      CHECK(doors.at({0, 0}) == Door::Open);
+
+      CHECK(doors.at({0, 6}) == Door::Closed);
+      doors.at({0, 6}) = Door::Open;
+      CHECK(doors.at({0, 6}) == Door::Open);
+
+      CHECK(doors.at({3, 0}) == Door::Closed);
+      doors.at({3, 0}) = Door::Open;
+      CHECK(doors.at({3, 0}) == Door::Open);
+
+      CHECK(doors.at({3, 6}) == Door::Closed);
+      doors.at({3, 6}) = Door::Open;
+      CHECK(doors.at({3, 6}) == Door::Open);
+    }
   }
 
   SUBCASE("Bounds") {
